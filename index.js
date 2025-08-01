@@ -5,9 +5,6 @@ const { sequelize } = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 
 app.use(cors());
 app.use(express.json());
@@ -23,11 +20,12 @@ app.use("/api/auth", authRoutes);
 sequelize
   .sync({ alter: true })
   .then(() => {
-    console.log(" Database connected with Sequelize");
+    console.log("✅ Database connected with Sequelize");
+
     app.listen(PORT, () => {
-      console.log(` Server running on http://localhost:${PORT}`);
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
-    console.error(" Failed to connect to the database:", err);
+    console.error("❌ Failed to connect to the database:", err);
   });
