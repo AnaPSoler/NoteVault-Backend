@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
     "migrate": "set NODE_ENV=production && npx sequelize-cli db:migrate --config config/config.js"
   },
   "keywords": [],
